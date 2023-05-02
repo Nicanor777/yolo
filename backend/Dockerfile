@@ -1,10 +1,10 @@
 FROM node:13.12-alpine 
 
-RUN mkdir -p app
+RUN mkdir -p backend
 
-WORKDIR /app
+WORKDIR /backend
 
-COPY . /app
+COPY . /backend
 
 RUN npm install
 
