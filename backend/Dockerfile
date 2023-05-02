@@ -1,11 +1,11 @@
 FROM node:13.12-alpine 
 
-RUN mkdir /app
+RUN mkdir -p app
+
 WORKDIR /app
-COPY . /app/
+
+COPY . /app
 
 RUN npm install
-COPY . /app/
 
-RUN npm build
 CMD [ "npm", "start" ]
