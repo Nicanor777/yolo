@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-week10-client-deployment
+  labels:
+    app: devops-week10-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-week10-client
+  template:
+    metadata:
+      labels:
+        app: devops-week10-client
+    spec:
+      containers:
+        - name: devops-week10-client
+          image: hawksdev/devops-week10-client:1.0.1
+          tty: true
+          ports:
+            - containerPort: 3000
