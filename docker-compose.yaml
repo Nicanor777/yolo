@@ -3,9 +3,7 @@ version: '3'
 services:
   backend:
     container_name: backend_container
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: 0100ulquiorra/devops-week10-backend:1.0.0
     ports:
       - 6000:6000
     volumes:
@@ -17,9 +15,7 @@ services:
       MONGO_URI: ''
   client:
     container_name: client_container
-    build:
-      context: client
-      dockerfile: Dockerfile
+    image: 0100ulquiorra/devops-week10-client:1.0.0
     tty: true
     ports:
       - 3000:3000
