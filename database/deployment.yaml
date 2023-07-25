@@ -41,3 +41,21 @@ spec:
           image: mongo
           ports:
             - containerPort: 27017
+          volumeMounts:
+            - name: devops-week10-database
+              mountPath: /data/db
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: devops-week10-database-secrets
+                  key: MONGO_INITDB_ROOT_USERNAME
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: devops-week10-database-secrets
+                  key: MONGO_INITDB_ROOT_PASSWORD
+      volumes:
+        - name: devops-week10-database
+          persistentVolumeClaim:
+            claimName: devops-week10-database-claim
