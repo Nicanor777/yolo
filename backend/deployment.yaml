@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-week10-backend-deployment
+  labels:
+    app: devops-week10-backend
+spec:
+  selector:
+    matchLabels:
+      app: devops-week10-backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: devops-week10-backend
+    spec:
+      containers:
+        - name: devops-week10-backend
+          image: 0100ulquiorra/devops-week10-client:1.0.0
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: database-volume-yolo
+              mountPath: /data/db
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: devops-week10-backend-secrets
+                  key: MONGO_INITDB_ROOT_USERNAME
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: devops-week10-backend-secrets
+                  key: MONGO_INITDB_ROOT_PASSWORD
+      volumes:
+        - name: database-volume-yolo
+          persistentVolumeClaim:
+            claimName: devopsg3-yolo-database-claim
