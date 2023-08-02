@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: devops-week10-client
-          image: hawksdev/devops-week10-client:1.0.1
+          image: 0100ulquiorra/yolo-client:1.0.0
           tty: true
           ports:
             - containerPort: 3000
