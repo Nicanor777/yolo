@@ -2,28 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: devops-week10-database-deployment
-spec:
-  selector:
-    matchLabels:
-      app: devops-week10-database
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: devops-week10-database
-    spec:
-      containers:
-        - name: devops-week10-database
-          image: mongo
-          ports:
-            - containerPort: 27017
-
-
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: devops-week10-database-deployment
   labels:
     app: devops-week10-database
 spec:
